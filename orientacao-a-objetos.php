@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * A Programação Orientada a Objetos (POO) é um paradigma de programação que organiza o código em torno de objetos, que são instâncias de classes. 
@@ -7,31 +7,32 @@
  */
 
 # Classe e Objeto
-# Atributos de uma classe são variáveis que armazenam o estado de um objeto. No exemplo abaixo, `marca` e `modelo` são atributos da classe `Carro`.
-# Metódos sao funcoes dentro de uma classe que realizam acoes sobre os atributos e executam alguma lógica.
-class Carro
+# Uma classe define um modelo ou blueprint para criar objetos.
+# Atributos são variáveis que armazenam o estado do objeto.
+# Métodos são funções que definem o comportamento do objeto.
+class Aviao
 {
     public $marca;
     public $modelo;
 
-    public function ligar()
+    public function voar()
     {
-        return "O carro está ligado.";
+        return "O avião está voando.";
     }
 }
 
-$meuCarro = new Carro();
-$meuCarro->marca = "Toyota";
-$meuCarro->modelo = "Passeio";
+$aviao = new Aviao(); // Criando um objeto da classe Aviao
+$aviao->marca = "Boeing"; // Atribuindo valores aos atributos do objeto
+$aviao->modelo = "787 Dreamliner";
 
-echo $meuCarro->ligar();
+echo $aviao->voar(); // Chamando um método do objeto
 
 /**
- * Modificadores de acesso
- * Os modificadores de acesso determinam a visibilidade de atributos é métodos
- * Public: podem ser acessados de qualquer lugar.
- * Protected: podem ser acessados somente pela classe ou por classes derivadas (extends).
- * Private: podem ser acessados somente pela classe.
+ * Modificadores de Acesso
+ * Os modificadores de acesso determinam a visibilidade de atributos e métodos:
+ * - `public`: acessível de qualquer lugar.
+ * - `protected`: acessível apenas pela própria classe e subclasses.
+ * - `private`: acessível apenas pela própria classe.
  */
 class Pessoa
 {
@@ -50,16 +51,16 @@ class Pessoa
     }
 }
 
-$eduardo = new Pessoa();
-$eduardo->setNome("carlos eduardo");
-$eduardo->email = "eduardostrink@gmail.com";
-echo $eduardo->getNome();
-echo $eduardo->email;
+$eduardo = new Pessoa(); // Criando um objeto da classe Pessoa
+$eduardo->setNome("jonh"); // Definindo um valor usando um método setter
+$eduardo->email = "jonh@gmail.com"; // Acesso público permitido diretamente
+echo $eduardo->getNome(); // Obtendo o nome usando o getter
+echo $eduardo->email; // Exibindo o e-mail
 
 /**
- * Construtores e destrutores
- * O construtor é um método especial chamado automaticamente quando uma nova instância de uma classe é criada. 
- * O destrutor é executado quando o objeto é destruído.
+ * Construtores e Destrutores
+ * O construtor é um método especial chamado automaticamente quando uma nova instância é criada.
+ * O destrutor é chamado quando o objeto é destruído.
  */
 class Usuario
 {
@@ -69,28 +70,27 @@ class Usuario
     public function __construct(string $nome)
     {
         $this->nome = $nome;
-        echo "O usuario " . $this->nome . " foi criado \n";
+        echo "O usuário " . $this->nome . " foi criado \n";
     }
 
     // Destrutor
     public function __destruct()
     {
-        echo "Removendo o usuario " . $this->nome . " da memoria \n";
+        echo "Removendo o usuário " . $this->nome . " da memória \n";
     }
 }
 
-$usuario = new Usuario("eduardo");
+$usuario = new Usuario("jonh"); // Ao criar o objeto, o construtor é chamado automaticamente
 
 /**
- * Heranca
- * A herança permite que uma classe (subclasse) herde os atributos e métodos de outra classe (classe pai). 
- * Isso promove a reutilização de código
+ * Herança
+ * A herança permite que uma classe (subclasse) herde atributos e métodos de outra classe (classe pai).
  */
 class Animal
 {
     public function fazerSom(): string
     {
-        return "Algum Som";
+        return "Algum som";
     }
 }
 
@@ -102,13 +102,12 @@ class Cachorro extends Animal
     }
 }
 
-$meuCachorro = new Cachorro();
-echo $meuCachorro->fazerSom();
+$meuCachorro = new Cachorro(); // Instância de Cachorro, que herda de Animal
+echo $meuCachorro->fazerSom(); // O método fazerSom é sobrescrito na classe Cachorro
 
 /**
  * Polimorfismo
- * O polimorfismo permite que um método possa ser utilizado de diferentes formas, dependendo da classe que o implementa. 
- * No exemplo anterior, o método `fazerSom()` é polimórfico porque ele pode produzir diferentes resultados dependendo da classe que o chama.
+ * O polimorfismo permite que um método tenha diferentes implementações dependendo da classe que o chama.
  */
 class Gato extends Animal
 {
@@ -117,18 +116,19 @@ class Gato extends Animal
         return "Miau miau";
     }
 }
-$gato = new Gato();
+
+$gato = new Gato(); // Instância da classe Gato
 
 function somDoAnimal(Animal $animal)
 {
     echo $animal->fazerSom();
 }
-somDoAnimal($gato);
+
+somDoAnimal($gato); // Chama o método fazerSom() de Gato, mostrando o polimorfismo
 
 /**
  * Encapsulamento
- * O encapsulamento é a prática de restringir o acesso direto aos atributos de um objeto e fornecê-lo apenas por meio de métodos específicos (getters e setters). 
- * Isso melhora a segurança e flexibilidade do código
+ * O encapsulamento restringe o acesso direto aos atributos de um objeto e proporciona segurança por meio de métodos acessores (getters e setters).
  */
 class Produto
 {
@@ -146,18 +146,18 @@ class Produto
         return $this->preco;
     }
 }
+
 $arroz = new Produto();
 $arroz->setPreco(4.89);
 echo $arroz->getPreco();
 
 /**
  * Interfaces
- * Uma interface define um conjunto de métodos que uma classe deve implementar, sem fornecer a implementação desses métodos. 
- * Ela serve como um contrato para garantir que diferentes classes tenham uma estrutura comum.
+ * Uma interface define um contrato que uma classe deve implementar. As classes que implementam a interface devem definir todos os métodos da interface.
  */
 interface Forma
 {
-    public function calcularArea(); 
+    public function calcularArea();
 }
 
 class Retangulo implements Forma
@@ -176,13 +176,13 @@ class Retangulo implements Forma
         return $this->largura * $this->altura;
     }
 }
+
 $retangulo = new Retangulo(300, 40);
-var_dump($retangulo->calcularArea());
+var_dump($retangulo->calcularArea()); // Implementa o método calcularArea da interface Forma
 
 /**
- * Abstracao
- * A **abstração** permite que você crie classes abstratas que não podem ser instanciadas diretamente. 
- * Elas servem como modelos para outras classes que devem implementar os métodos abstratos.
+ * Abstração
+ * A abstração permite criar classes abstratas que não podem ser instanciadas diretamente. Elas servem como um modelo para outras classes.
  */
 abstract class Transporte
 {
@@ -193,16 +193,16 @@ class Onibus extends Transporte
 {
     public function mover()
     {
-        return "Onibus se movendo";
+        return "Ônibus se movendo";
     }
 }
+
 $onibus = new Onibus();
-var_dump($onibus->mover());
+var_dump($onibus->mover()); // Implementação do método mover na classe Onibus
 
 /**
  * Traits
- * Os traits** são um mecanismo para reutilização de código em múltiplas classes. 
- * Eles permitem compartilhar métodos comuns entre diferentes classes sem usar herança.
+ * Traits permitem compartilhar métodos entre classes sem usar herança. Eles promovem a reutilização de código em múltiplas classes.
  */
 trait PrecoTrait
 {
@@ -212,10 +212,10 @@ trait PrecoTrait
     }
 }
 
-class Produto2 
+class Produto2
 {
-    use PrecoTrait;
+    use PrecoTrait; // Usa o trait PrecoTrait
 }
 
 $feijao = new Produto2();
-var_dump($feijao->aplicarDesconto(4.89, 10));
+var_dump($feijao->aplicarDesconto(4.89, 10)); // Aplica o desconto de 10% no preço

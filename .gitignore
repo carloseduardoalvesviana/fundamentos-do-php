@@ -1,0 +1,47 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretórios de dependências
+node_modules/
+vendor/
+
+# Compilados e builds
+dist/
+build/
+out/
+
+# Diretórios temporários
+tmp/
+temp/
+.cache/
+*.tmp
+
+# Arquivos de IDEs/editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Configurações de ambiente
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Arquivos de banco de dados locais
+*.sqlite3
+
+# Arquivos de pacotes do sistema
+*.pid
+*.seed
+
+# Arquivos específicos de sistemas operacionais
+ehthumbs.db
+Desktop.ini
